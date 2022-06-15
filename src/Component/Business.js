@@ -1,5 +1,5 @@
 import React from 'react';
-import { useOutletContext } from 'react-router-dom';
+import { useNavigate, useOutletContext } from 'react-router-dom';
 import { AiOutlineWhatsApp } from 'react-icons/ai';
 import { AiOutlineSend } from 'react-icons/ai';
 import { BsThreeDotsVertical } from 'react-icons/bs';
@@ -8,7 +8,8 @@ import Modal from './Modal';
 
 const Business = () => {
   const [user, showModal, setShowModal] = useOutletContext();
-  console.log(user.products);
+  const navigate = useNavigate();
+  //   console.log(user.products);
 
   return (
     <section className="h-[60vh] overflow-x-scroll">
@@ -55,7 +56,11 @@ const Business = () => {
                     product?.posts[0]?.marketType +
                     ' Rates'}
                 </h2>
-                <button>
+                <button
+                  onClick={() =>
+                    navigate(`report/${product?.posts[0]?.reportID}`)
+                  }
+                >
                   <BsThreeDotsVertical size={25} />
                 </button>
               </div>
