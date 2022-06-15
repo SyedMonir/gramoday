@@ -4,8 +4,10 @@ import { FaUserCircle } from 'react-icons/fa';
 import { AiOutlineUserAdd } from 'react-icons/ai';
 import { IoMdCall } from 'react-icons/io';
 import { Outlet, NavLink } from 'react-router-dom';
+import Modal from './Modal';
 
 const Home = () => {
+  const [showModal, setShowModal] = React.useState(false);
   const {
     isLoading,
     error,
@@ -42,10 +44,16 @@ const Home = () => {
           </h6>
 
           <div className="flex gap-2">
-            <button className="btn flex items-center bg-[#01A39D] text-white rounded-3xl px-2 py-1 text-sm">
+            <button
+              className="btn flex items-center bg-[#01A39D] text-white rounded-3xl px-2 py-1 text-sm"
+              onClick={() => setShowModal(true)}
+            >
               <AiOutlineUserAdd className="mr-1" /> Connect
             </button>
-            <button className="btn flex items-center text-[#01A39D] border border-[#01A39D] rounded-3xl px-2 py-1 text-sm">
+            <button
+              className="btn flex items-center text-[#01A39D] border border-[#01A39D] rounded-3xl px-2 py-1 text-sm"
+              onClick={() => setShowModal(true)}
+            >
               <IoMdCall className="mr-1" /> Contact
             </button>
           </div>
@@ -71,7 +79,8 @@ const Home = () => {
           </NavLink>
         </nav>
 
-        <Outlet context={[user]} />
+        {showModal && <Modal setShowModal={setShowModal} />}
+        <Outlet context={[user, showModal, setShowModal]} />
       </div>
     </section>
   );
