@@ -27,7 +27,7 @@ const Home = () => {
   };
 
   return (
-    <section className="w-auto sm:w-1/2 mx-auto px-4">
+    <section className="w-auto sm:w-3/5 h-screen mx-auto px-4">
       <div className="flex gap-6 my-4">
         <div className="mt-4">
           <FaUserCircle color="#616161" size={82} />
@@ -53,7 +53,7 @@ const Home = () => {
       </div>
 
       {/* Tav */}
-      <div>
+      <div className="px-4">
         <nav className="tabs flex">
           <NavLink
             to="/"
@@ -71,7 +71,7 @@ const Home = () => {
           </NavLink>
         </nav>
 
-        <Outlet context={[user]}>A</Outlet>
+        <Outlet context={[user]} />
       </div>
     </section>
   );
