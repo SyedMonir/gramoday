@@ -3,13 +3,14 @@ import { useQuery } from 'react-query';
 import { FaUserCircle } from 'react-icons/fa';
 import { AiOutlineUserAdd } from 'react-icons/ai';
 import { IoMdCall } from 'react-icons/io';
+import { Outlet, NavLink } from 'react-router-dom';
 
 const Home = () => {
   const {
     isLoading,
     error,
     data: user,
-  } = useQuery('repoData', () =>
+  } = useQuery('user', () =>
     fetch(
       'https://api.gramoday.net:8082/v1/user/bySlug?profileSlug=mmtradingco'
     ).then((res) => res.json())
@@ -21,7 +22,10 @@ const Home = () => {
     console.log(error.message);
   }
 
-  //   console.log(user);
+  let activeStyle = {
+    borderColor: '#01A39D',
+  };
+
   return (
     <section className="w-auto sm:w-1/2 mx-auto px-4">
       <div className="flex gap-6 my-4">
@@ -46,6 +50,28 @@ const Home = () => {
             </button>
           </div>
         </div>
+      </div>
+
+      {/* Tav */}
+      <div>
+        <nav className="tabs flex">
+          <NavLink
+            to="/"
+            style={({ isActive }) => (isActive ? activeStyle : null)}
+            className=" w-1/2 text-black py-4 px-6 block hover:text-[#01A39D] uppercase  border-b-4 font-medium  text-center"
+          >
+            Business
+          </NavLink>
+          <NavLink
+            to="/review"
+            style={({ isActive }) => (isActive ? activeStyle : null)}
+            className=" w-1/2 text-black py-4 px-6 block hover:text-[#01A39D] uppercase  border-b-4 font-medium text-center"
+          >
+            Review
+          </NavLink>
+        </nav>
+
+        <Outlet context={[user]}>A</Outlet>
       </div>
     </section>
   );
