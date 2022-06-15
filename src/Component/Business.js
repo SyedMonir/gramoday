@@ -2,6 +2,7 @@ import React from 'react';
 import { useOutletContext } from 'react-router-dom';
 import { AiOutlineWhatsApp } from 'react-icons/ai';
 import { AiOutlineSend } from 'react-icons/ai';
+import { BsThreeDotsVertical } from 'react-icons/bs';
 import './style.css';
 import Modal from './Modal';
 
@@ -47,12 +48,17 @@ const Business = () => {
               <img src={product?.picUrl + '.jpg'} alt="" />
             </div>
             <div className="w-full">
-              <h2 className="font-medium text-base">
-                {product?.posts[0]?.cmdtyStdName +
-                  ' ' +
-                  product?.posts[0]?.marketType +
-                  ' Rates'}
-              </h2>
+              <div className="flex justify-between mr-2">
+                <h2 className="font-medium text-base">
+                  {product?.posts[0]?.cmdtyStdName +
+                    ' ' +
+                    product?.posts[0]?.marketType +
+                    ' Rates'}
+                </h2>
+                <button>
+                  <BsThreeDotsVertical size={25} />
+                </button>
+              </div>
               <h5 className="text-xs mt-2">
                 {product?.posts[0]?.marketStdName +
                   ', ' +
@@ -61,14 +67,17 @@ const Business = () => {
                   product?.posts[0]?.loclevel2ShortName}
               </h5>
               <p className="text-xs mb-2">13/06/2022</p>
-              <h6 className=" mb-2 font-semibold">
-                ₹{' '}
-                {product?.posts[0]?.priceDetails[0]?.minPrice +
-                  ' - ' +
-                  product?.posts[0]?.priceDetails[0]?.maxPrice +
-                  ' / 1 ' +
-                  product?.posts[0]?.rawReportPriceUnit}
-              </h6>
+              <div className="flex justify-between mr-4">
+                <h6 className=" mb-2 font-semibold">
+                  ₹{' '}
+                  {product?.posts[0]?.priceDetails[0]?.minPrice +
+                    ' - ' +
+                    product?.posts[0]?.priceDetails[0]?.maxPrice +
+                    ' / 1 ' +
+                    product?.posts[0]?.rawReportPriceUnit}
+                </h6>
+                <span className="text-xs italic">Updated at 06.55 PM</span>
+              </div>
               <div className="flex gap-2 border-t-2 p-1 justify-around">
                 <a
                   href={`https://api.whatsapp.com/send?phone=01988512131`}

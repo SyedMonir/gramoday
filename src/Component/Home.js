@@ -2,9 +2,11 @@ import React from 'react';
 import { useQuery } from 'react-query';
 import { FaUserCircle } from 'react-icons/fa';
 import { AiOutlineUserAdd } from 'react-icons/ai';
+import { AiOutlineWhatsApp } from 'react-icons/ai';
 import { IoMdCall } from 'react-icons/io';
 import { Outlet, NavLink } from 'react-router-dom';
 import Modal from './Modal';
+import './style.css';
 
 const Home = () => {
   const [showModal, setShowModal] = React.useState(false);
@@ -34,8 +36,21 @@ const Home = () => {
         <div className="mt-4">
           <FaUserCircle color="#616161" size={82} />
         </div>
-        <div>
-          <h1 className="font-bold text-xl">{user?.name}</h1>
+        <div className="w-full">
+          <div className="flex justify-between w-full">
+            <h1 className="font-bold text-xl">{user?.name}</h1>
+            <p>
+              <a
+                href={`https://api.whatsapp.com/send?phone=01988512131`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn flex items-center bg-[#01A39D] text-white rounded-3xl p-1 text-xs"
+              >
+                <AiOutlineWhatsApp className="mr-1" />
+                Share
+              </a>
+            </p>
+          </div>
           <h5 className="my-2">
             {user?.loclevel3Name + ', ' + user?.loclevel2Name}
           </h5>
@@ -61,7 +76,7 @@ const Home = () => {
       </div>
 
       {/* Tav */}
-      <div className="px-4">
+      <div className="sm:px-4">
         <nav className="tabs flex">
           <NavLink
             to="/"
@@ -81,6 +96,12 @@ const Home = () => {
 
         {showModal && <Modal setShowModal={setShowModal} />}
         <Outlet context={[user, showModal, setShowModal]} />
+        <div className=" bg-white text-sm fixed bottom-0 left-1/3 mx-auto product px-2  rounded-2xl mb-2 text-[#6506EF] ">
+          Join the agricultural community{' '}
+          <button className="text-white bg-gradient-to-b from-[#6506EF]  to-[#A872F5] rounded-3xl py-2 px-2">
+            DOWNLOAD GRAMODAYA
+          </button>
+        </div>
       </div>
     </section>
   );
