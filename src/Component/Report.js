@@ -34,7 +34,12 @@ const Report = () => {
   console.log(reportProduct);
   return (
     <>
-      <Navbar>Pr</Navbar>
+      <Navbar>
+        {reportProduct?.posts[0]?.cmdtyStdName}{' '}
+        <span className="capitalize">
+          {reportProduct?.posts[0]?.contentType}
+        </span>
+      </Navbar>
       <section className="w-auto sm:w-3/5 h-screen mx-auto px-1">
         <section className="bg-[#EEEEEE] m-4 p-3 rounded-lg report">
           <div className="flex justify-between pb-2">
