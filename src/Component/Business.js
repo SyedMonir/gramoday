@@ -50,7 +50,12 @@ const Business = () => {
             </div>
             <div className="w-full">
               <div className="flex justify-between mr-2">
-                <h2 className="font-medium text-base">
+                <h2
+                  onClick={() =>
+                    navigate(`report/${product?.posts[0]?.reportID}`)
+                  }
+                  className="font-medium text-base cursor-pointer"
+                >
                   {product?.posts[0]?.cmdtyStdName +
                     ' ' +
                     product?.posts[0]?.marketType +

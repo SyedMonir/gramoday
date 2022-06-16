@@ -5,6 +5,8 @@ import { FaUserCircle } from 'react-icons/fa';
 import { FiPhoneCall } from 'react-icons/fi';
 import { AiFillStar } from 'react-icons/ai';
 import { AiFillQuestionCircle } from 'react-icons/ai';
+import { FaTruck } from 'react-icons/fa';
+import { BiUserVoice } from 'react-icons/bi';
 import Navbar from './Navbar';
 
 const Report = () => {
@@ -33,8 +35,8 @@ const Report = () => {
   return (
     <>
       <Navbar>Pr</Navbar>
-      <section className="w-auto sm:w-3/5 h-screen mx-auto px-4">
-        <section className="bg-[#EEEEEE] m-4 p-2 rounded-lg">
+      <section className="w-auto sm:w-3/5 h-screen mx-auto px-1">
+        <section className="bg-[#EEEEEE] m-4 p-3 rounded-lg report">
           <div className="flex justify-between pb-2">
             <div className="flex">
               <FaUserCircle
@@ -75,6 +77,68 @@ const Report = () => {
             </div>
           </div>
         </section>
+
+        {/* Rates */}
+        <div className="border-l-[6px] border-[#01A39D] mx-2 ">
+          <div className="flex justify-between items-center  border-b-2 border-[#01A39D] px-2">
+            <h1 className="font-bold text-sm italic text-[#01A39D]">Rates</h1>
+            <div className="text-[#01A39D] font-bold">₹</div>
+          </div>
+          {reportProduct?.posts[0]?.priceDetails?.map((rate) => (
+            <div className="flex justify-between items-center pt-2 border-t-2 px-2">
+              <h1 className="font-bold text-sm flex ">
+                {rate?.varietyName}
+                {rate?.gradeName ? ' (' + rate?.gradeName + ')' : ''}
+              </h1>
+              <div className="font-bold">
+                {rate?.minPrice + '-' + rate?.maxPrice}
+              </div>
+            </div>
+          ))}
+          <small className="italic px-2 text-xs">
+            Rates are in ₹/1 Kg and exclude mandi commission and tax
+          </small>
+        </div>
+        <br />
+        {/* Arrival */}
+        <div className="border-l-[6px] border-[#6202EE] mx-2 ">
+          <div className="flex justify-between items-center  border-b-2 border-[#6202EE] px-2">
+            <h1 className="font-bold text-sm italic text-[#6202EE]">Arrival</h1>
+            <div className="text-[#6202EE] font-bold">
+              <FaTruck />
+            </div>
+          </div>
+          <div className="flex justify-between items-center pt-2 border-t-2 px-2">
+            <h1 className="font-bold text-sm flex ">Fresh Arrival</h1>
+            <div className="font-bold">3300</div>
+          </div>
+          <div className="flex justify-between items-center pt-2 border-t-2 px-2">
+            <h1 className="font-bold text-sm flex ">Balance Arrival</h1>
+            <div className="font-bold">3300</div>
+          </div>
+          <small className="italic px-2 text-xs">
+            Arrivals are in Large Trucks. 1 Large Trucks = 20 Tonss
+          </small>
+        </div>
+        <br />
+        {/* Analysis */}
+
+        <div className="border-l-[6px] border-[#D2AA1B] mx-2 ">
+          <div className="flex justify-between items-center  border-b-2 border-[#D2AA1B] px-2">
+            <h1 className="font-bold text-sm italic text-[#D2AA1B]">Arrival</h1>
+            <div className="text-[#D2AA1B] font-bold">
+              <BiUserVoice />
+            </div>
+          </div>
+          <h2 className="px-2 pb-4">Sale is slow..</h2>
+        </div>
+
+        <div className=" bg-white text-sm fixed bottom-0 left-1/3 mx-auto product px-2  rounded-2xl mb-2 text-[#6506EF] ">
+          Join the agricultural community{' '}
+          <button className="text-white bg-gradient-to-b from-[#6506EF]  to-[#A872F5] rounded-3xl py-2 px-2">
+            DOWNLOAD GRAMODAYA
+          </button>
+        </div>
       </section>
     </>
   );
